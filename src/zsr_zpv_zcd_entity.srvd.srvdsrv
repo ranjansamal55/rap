@@ -1,0 +1,12 @@
+@EndUserText.label: 'service defination'
+define service ZSR_ZPV_ZCD_ENTITY {
+  expose zpv_zcd_entity_srs_45      as travel;
+  expose zpv_ZCDS_ENTITY_BOOKING    as booking;
+  expose zpv_ZCDS_ENTITY_BOOKSUPPLI as booksuppl;
+  expose /DMO/I_Agency              as agency;
+  expose /DMO/I_Customer            as customer;
+  expose /DMO/I_Carrier             as carrier;
+  expose /DMO/I_Connection          as connection;
+  expose /DMO/I_Overall_Status_VH   as overstatus;
+  expose /DMO/I_Booking_Status_VH   as bookingstatus;
+}

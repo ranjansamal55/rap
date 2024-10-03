@@ -1,0 +1,66 @@
+managed implementation in class zbp_cds_entity_srs_45 unique;
+strict ( 2 );
+// guide line and best practice for defination to be follwed
+// second version
+
+
+// define the behavior of root entity
+
+define behavior for zcds_entity_srs_45 alias travel
+// telling the framework to insert the data in this db table for travel request
+persistent table /dmo/travel_m
+// Rap should handle the locks , if the trave requst is locked the other user can not edit the child
+// this is a optimastic lock not pasmastic lock (exclusive  lock)
+// optimastic lock means other user can edit the object to paralell to change the data
+lock master
+// control the permission and security  setting for our RAP who can edit ,delete other curd operation
+authorization master ( instance )
+
+
+etag master LastChangedAt  // this is for con-currency control
+//
+{
+  create;
+  update;
+  delete;
+  //  field ( readonly ) TravelId;
+  //  a booking can be only created with travel request
+  association _booking { create; }
+  mapping for /dmo/travel_m
+    {
+      TravelId     = travel_id;
+      AgencyId     = agency_id;
+      CustomerId   = customer_id;
+      BookingFee   = booking_fee;
+      TotalPrice   = total_price;
+      CurrencyCode = currency_code;
+    }
+}
+
+define behavior for zcds_entity_booking alias booking
+// telling the framework to insert the data in this db table for booking request
+persistent table /dmo/booking_m
+lock dependent by _travel
+authorization dependent by _travel
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) TravelId, BookingId;
+  association _travel;
+  association _bookingsup { create; }
+}
+
+define behavior for zcds_entity_booksuppli alias booking_suppl
+// telling the framework to insert the data in this db table for bookingsupli
+persistent table /dmo/booksuppl_m
+lock dependent by _travel
+authorization dependent by _travel
+//etag master <field_name>
+{
+  update;
+  delete;
+  field ( readonly ) travel_id, booking_id, booking_supplement_id;
+  association _travel;
+  association _booking;
+}

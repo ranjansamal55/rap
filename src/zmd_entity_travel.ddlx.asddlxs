@@ -1,0 +1,73 @@
+@Metadata.layer: #CUSTOMER
+@UI.headerInfo: {
+    typeName: 'Travel',
+    typeNamePlural: 'Travels',
+    title: {     value: 'TravelId'
+                     },
+                     
+description:{ value:'_Customer.FirstName'}
+}
+
+annotate view zpv_zcd_entity_srs_45 with
+
+{
+@UI.facet: [{ purpose: #HEADER,type: #DATAPOINT_REFERENCE ,label: 'Ticket_Price',position: 10,targetQualifier: 'Target_Quali' },
+{ purpose: #HEADER,type: #DATAPOINT_REFERENCE ,label: 'Status',position: 20,targetQualifier: 'Overall_status' },
+{ purpose: #STANDARD,type: #COLLECTION ,label: 'Collection',position: 10 ,id: 'Super' },
+{ purpose: #STANDARD,type: #IDENTIFICATION_REFERENCE ,label: 'Child_Info',position: 10 ,parentId: 'Super' } ,
+{ purpose: #STANDARD,type: #FIELDGROUP_REFERENCE ,label: 'Child_FG_T',position: 20 ,parentId: 'Super',targetQualifier: 'Field_Group' },
+{ purpose: #STANDARD,type: #LINEITEM_REFERENCE ,label: 'Booking',position: 20,targetElement:'_booking' }
+
+]
+  @UI.selectionField: [{ position: 10 }]
+  @UI.lineItem: [{ position: 10 }]
+  @UI.identification: [{ position: 10 }]
+  TravelId;
+  @UI.selectionField: [{ position: 20 }]
+  @UI.lineItem: [{ position: 20 }]
+  @UI.identification: [{ position: 20 }]
+  AgencyId;
+  @UI.selectionField: [{ position: 30 }]
+  @UI.lineItem: [{ position: 30 }]
+  @UI.identification: [{ position: 30 }]
+  CustomerId;
+  @UI.lineItem: [{ position: 40 }]
+  BeginDate;
+  @UI.lineItem: [{ position: 50 }]
+  EndDate;
+  @UI.lineItem: [{ position: 60 }]
+  @UI.fieldGroup: [{ qualifier: 'Field_Group' ,label: 'Booking_fees',position: 10}]
+  BookingFee;
+  @UI.lineItem: [{ position: 70 }]
+  @UI.dataPoint:{ qualifier: 'Target_Quali',title: 'Total_Price' }
+   @UI.fieldGroup: [{ qualifier: 'Field_Group' ,label: 'Total_Price',position: 20}]
+  TotalPrice;
+  @UI.lineItem: [{ position: 80 }]
+   @UI.fieldGroup: [{ qualifier: 'Field_Group' ,label: 'Currency_code',position: 30}]
+  CurrencyCode;
+  @UI.lineItem: [{ position: 90 }]
+  Description;
+  @UI.lineItem: [{ position: 100 , criticality: 'criticality',importance: #HIGH}]
+  @UI.dataPoint:{ qualifier: 'Overall_status',title: 'Status',criticality: 'criticality'}
+  OverallStatus;
+  @UI.lineItem: [{ position: 110 }]
+  CreatedBy;
+  @UI.lineItem: [{ position: 120 }]
+  CreatedAt;
+  @UI.lineItem: [{ position: 130 }]
+  LastChangedBy;
+  @UI.lineItem: [{ position: 140 }]
+  LastChangedAt;
+
+  
+  
+
+  
+  /* Associations */
+  //    _agency;
+  //    _booking;
+  //    _currency;
+  //    _customer;
+  //    _overallstatus;
+
+}

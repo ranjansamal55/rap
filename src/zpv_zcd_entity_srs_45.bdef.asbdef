@@ -1,0 +1,29 @@
+projection;
+strict ( 2 );
+
+define behavior for zpv_zcd_entity_srs_45 alias travel
+{
+  use create;
+  use update;
+  use delete;
+
+  use association _booking { create; }
+}
+
+define behavior for zpv_ZCDS_ENTITY_BOOKING alias booking
+{
+  use update;
+  use delete;
+
+  use association _travel;
+  use association _bookingsup { create; }
+}
+
+define behavior for zpv_ZCDS_ENTITY_BOOKSUPPLI alias booking_suppl
+{
+  use update;
+  use delete;
+
+  use association _travel;
+  use association _booking;
+}

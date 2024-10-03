@@ -1,0 +1,4 @@
+@EndUserText.label: 'service defination for ZPV_ZCD_ENTITY_SRS_45'
+define service ZSR_ZPV_ZCD_ENTITY_SRS_45 {
+  expose zpv_zcd_entity_srs_45;
+}

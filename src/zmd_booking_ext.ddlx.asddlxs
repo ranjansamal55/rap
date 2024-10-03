@@ -1,0 +1,51 @@
+@Metadata.layer: #CORE
+
+@UI.headerInfo: {
+    typeName: 'Booking',
+    typeNamePlural: 'Bookngs',
+    title: {     value: 'BookingId'
+                     },
+
+description:{ value:'_Customer.LastName'}
+}
+
+annotate entity zpv_ZCDS_ENTITY_BOOKING with
+{
+  @UI.facet: [
+  { purpose: #STANDARD,type: #COLLECTION ,label: 'Booking_suppl',position: 10 ,id: 'Iron_Man' },
+//  { purpose: #STANDARD,type: #IDENTIFICATION_REFERENCE ,label: 'Child_Info',position: 10 ,parentId: 'Super' } ,
+//  { purpose: #STANDARD,type: #FIELDGROUP_REFERENCE     ,label: 'Child_FG_T',position: 20 ,parentId: 'Super',targetQualifier: 'Field_Group' },
+  { purpose: #STANDARD,type: #LINEITEM_REFERENCE ,label: 'Bookin_suppli',position: 10,targetElement:'_bookingsup' }
+
+  ]
+
+  //    TravelId;
+  @UI.lineItem: [{ position: 10 }]
+  BookingId;
+  @UI.lineItem: [{ position: 20 }]
+  BookingDate;
+  @UI.lineItem: [{ position: 30 }]
+  CustomerId;
+  @UI.lineItem: [{ position: 40 }]
+  CarrierId;
+  @UI.lineItem: [{ position: 50 }]
+  ConnectionId;
+  @UI.lineItem: [{ position: 60 }]
+  FlightDate;
+  @UI.lineItem: [{ position: 70 }]
+  FlightPrice;
+  @UI.lineItem: [{ position: 80 }]
+  CurrencyCode;
+  @UI.lineItem: [{ position: 90 }]
+  BookingStatus;
+  @UI.lineItem: [{ position: 100 }]
+  LastChangedAt;
+  /* Associations */
+  ////    _bookingstatus;
+  ////    _bookingsup;
+  ////    _carrier;
+  ////    _connection;
+  ////    _customer;
+  ////    _travel;
+
+}
